@@ -1,12 +1,13 @@
 import { HttpClient } from '@/adapters/httpClient'
 import { Meme, MemesResponseApi } from './memes.types'
+import { JSON_SERVER_DB_URL } from '@/constants'
 
 export class MemesService {
   constructor(private readonly httpClient = new HttpClient()) {}
 
   async getAllMemes(): Promise<Meme[]> {
     const { data, error } = await this.httpClient.request<MemesResponseApi[]>(
-      `http://localhost:3000/memes`,
+      JSON_SERVER_DB_URL,
       {
         cache: 'force-cache'
       }
@@ -21,7 +22,7 @@ export class MemesService {
 
   async getMeme(productId: string): Promise<Meme> {
     const { data, error } = await this.httpClient.request<MemesResponseApi>(
-      `http://localhost:3000/memes/${productId}`,
+      `${JSON_SERVER_DB_URL}${productId}`,
       {
         cache: 'force-cache'
       }
