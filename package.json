@@ -7,14 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "json-server": "npx json-server db.json"
+    "json-server": "npx json-server db.json -p 6006"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.51.23",
     "@tanstack/react-query-devtools": "^5.51.23",
-    "next": "14.2.5",
-    "react": "^18",
-    "react-dom": "^18"
+    "next": "^15.0.0-canary.129",
+    "react": "19.0.0-rc-b57d2823-20240822",
+    "react-dom": "19.0.0-rc-b57d2823-20240822"
   },
   "devDependencies": {
     "@types/node": "^20",
