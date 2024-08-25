@@ -1,0 +1,4 @@
+export const JSON_SERVER_DB_URL = 'http://localhost:6006/memes/'
+
+export const IMAGE_BLUR_URL =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNc/B0AAkMBnCN9nUgAAAAASUVORK5CYII='

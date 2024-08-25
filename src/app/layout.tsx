@@ -1,30 +1,34 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import './globals.css'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import '../styles/globals.css'
+import '../styles/globalicon.css'
+import { UseQueryClientProvider } from '@/providers/useQueryClientProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Os memes',
-  description: 'Teste de uso de ssr, csr e ppr',
+  description: 'Teste de uso de ssr, csr e ppr'
 }
 
-const queryClient = new QueryClient()
+export const experimental_ppr = true
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/icon.png" type="image/icon" sizes="icon" />
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        ></link>
+      </head>
       <body className={inter.className}>
-        <QueryClientProvider client={queryClient}>
-          {children}
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+        <UseQueryClientProvider>{children}</UseQueryClientProvider>
       </body>
     </html>
   )
