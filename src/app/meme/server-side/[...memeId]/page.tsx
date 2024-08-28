@@ -3,17 +3,17 @@ import { MemePage } from '@/components/MemePage'
 import { notFound } from 'next/navigation'
 import { memePageProps } from './meme.types'
 
-async function fetchDataMemes(memeId: string) {
+async function fetchDataMeme(memeId: string) {
   const memesService = new MemesService()
-  const dataMemes = await memesService.getMeme(memeId)
+  const dataMeme = await memesService.getMeme(memeId)
 
-  return dataMemes
+  return dataMeme
 }
 
 export default async function Meme({ params: { memeId } }: memePageProps) {
-  const dataMemes = await fetchDataMemes(memeId)
+  const dataMeme = await fetchDataMeme(memeId)
 
-  if (!dataMemes) return notFound()
+  if (!dataMeme) return notFound()
 
-  return <MemePage dataMemes={dataMemes} />
+  return <MemePage dataMemes={dataMeme} />
 }

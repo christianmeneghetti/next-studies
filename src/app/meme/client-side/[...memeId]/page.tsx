@@ -9,17 +9,17 @@ export default function Meme({ params: { memeId } }: memePageProps) {
   const memesService = new MemesService()
 
   const {
-    data: dataMemes,
+    data: dataMeme,
     isLoading,
     error
   } = useQuery({
-    queryKey: ['getMemes'],
+    queryKey: ['getMeme'],
     queryFn: () => memesService.getMeme(memeId)
   })
 
   if (isLoading) return <MemePageLoading />
 
-  if (!dataMemes || error) return notFound()
+  if (!dataMeme || error) return notFound()
 
-  return <MemePage dataMemes={dataMemes} />
+  return <MemePage dataMemes={dataMeme} />
 }
