@@ -9,7 +9,7 @@ export class MemesService {
     const { data, error } = await this.httpClient.request<MemesResponseApi[]>(
       JSON_SERVER_DB_URL,
       {
-        cache: 'force-cache'
+        cache: 'no-cache'
       }
     )
 
@@ -24,7 +24,7 @@ export class MemesService {
     const { data, error } = await this.httpClient.request<MemesResponseApi>(
       `${JSON_SERVER_DB_URL}${productId}`,
       {
-        cache: 'force-cache'
+        cache: 'no-cache'
       }
     )
 
