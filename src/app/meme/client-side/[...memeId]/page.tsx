@@ -14,7 +14,8 @@ export default function Meme({ params: { memeId } }: memePageProps) {
     error
   } = useQuery({
     queryKey: ['getMeme'],
-    queryFn: () => memesService.getMeme(memeId)
+    queryFn: () => memesService.getMeme(memeId),
+    staleTime: 300000
   })
 
   if (isLoading) return <MemePageLoading />

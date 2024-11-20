@@ -6,12 +6,8 @@ export class MemesService {
   constructor(private readonly httpClient = new HttpClient()) {}
 
   async getAllMemes(): Promise<Meme[]> {
-    const { data, error } = await this.httpClient.request<MemesResponseApi[]>(
-      JSON_SERVER_DB_URL,
-      {
-        cache: 'no-cache'
-      }
-    )
+    const { data, error } =
+      await this.httpClient.request<MemesResponseApi[]>(JSON_SERVER_DB_URL)
 
     if (error || !data) {
       throw new Error(`Erro: ${error}`)
@@ -24,7 +20,7 @@ export class MemesService {
     const { data, error } = await this.httpClient.request<MemesResponseApi>(
       `${JSON_SERVER_DB_URL}${productId}`,
       {
-        cache: 'no-cache'
+        cache: 'force-cache'
       }
     )
 
