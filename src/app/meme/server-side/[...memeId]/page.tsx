@@ -1,19 +1,12 @@
-import { MemesService } from '@/services/memes'
-import { MemePage } from '@/components/MemePage'
-import { notFound } from 'next/navigation'
+import { About } from '@/components/About'
+import { MemePagesSSR } from '@/components/MemePageSSR'
 import { memePageProps } from './meme.types'
 
-async function fetchDataMeme(memeId: string) {
-  const memesService = new MemesService()
-  const dataMeme = await memesService.getMeme(memeId)
-
-  return dataMeme
-}
-
 export default async function Meme({ params: { memeId } }: memePageProps) {
-  const dataMeme = await fetchDataMeme(memeId)
-
-  if (!dataMeme) return notFound()
-
-  return <MemePage dataMemes={dataMeme} />
+  return (
+    <div className="flex flex-col items-center justify-center inset-0 bg-zinc-800 -z-10 gap-32 p-16">
+      <MemePagesSSR memeId={memeId} />
+      <About />
+    </div>
+  )
 }
