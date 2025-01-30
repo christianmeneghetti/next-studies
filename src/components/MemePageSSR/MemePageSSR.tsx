@@ -1,10 +1,22 @@
+'use client'
+
 import { Information } from '../Information'
 import { Photo } from '../Photo'
 import { MemesService } from '@/services/memes'
+import { notFound } from 'next/navigation'
 
-export async function MemePagePPR({ memeId }: { memeId: string }) {
+async function fetchDataMeme(memeId: string) {
   const memesService = new MemesService()
   const dataMeme = await memesService.getMeme(memeId)
+
+  return dataMeme
+}
+
+export async function MemePagesSSR({ memeId }: { memeId: string }) {
+  const dataMeme = await fetchDataMeme(memeId)
+
+  if (!dataMeme) return notFound()
+
   const { img, imgAlt, ...restDataMeme } = dataMeme
 
   return (
